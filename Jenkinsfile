@@ -4,7 +4,7 @@ pipeline {
         stage('Create File') {
             steps {
                 sh '''
-		docker run -d -name nginx docker.arvancloud.ir/nginx
+		docker run -d --name nginx docker.arvancloud.ir/nginx
                 '''
             }
         }
