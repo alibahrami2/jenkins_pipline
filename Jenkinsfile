@@ -1,15 +1,16 @@
 pipeline {
     agent { label 'host-agent' }  
-	triggers {
-        githubPush()               // trigger on GitHub push events
-    }
+	
     stages {
-		stage('Checkout') {
+		stage('Create File') {
             steps {
-                git branch: 'main', url: 'https://github.com/alibahrami2/jenkins_pipline.git'
+                sh '''
+		docker run -d --name nginx docker.arvancloud.ir/nginx
+                '''
             }
+        }
 		}
         
     }
-}
+
 
