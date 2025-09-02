@@ -1,19 +1,11 @@
 pipeline {
-    agent any
+    agent { label 'host-agent' }   // ensure this runs on your host agent
     stages {
-        stage('Build') {
+        stage('Create File') {
             steps {
-                echo 'Building...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                sh '''
+		docker run -d -name nginx docker.arvancloud.ir/nginx
+                '''
             }
         }
     }
